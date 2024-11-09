@@ -30,7 +30,7 @@ function Users({ userList, setUserList }) {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Profile</th>
+                        <th>AVATAR</th>
                         <th>NAME</th>
                         <th>EMAIL</th>
                         <th>PASSWORD</th>
