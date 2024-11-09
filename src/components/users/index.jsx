@@ -43,7 +43,7 @@ function Users({ userList, setUserList }) {
                         userList.map(user => (
                             <tr key={user.id}>
                                 <th>{user.id}</th>
-                                <th><img src={Guy1} alt="" /></th>
+                                <th><img src={user.selectedAvatar} alt="" /></th>
                                 <th>
                                     {user.id === updateUser.id ? (
                                         <input type="text" name="userName" value={updateUser.userName} onChange={changeUser} />

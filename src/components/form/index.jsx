@@ -5,16 +5,18 @@ import Guy2 from '../../assets/images/Guy2.png';
 import Guy3 from '../../assets/images/Guy3.png';
 import Guy4 from '../../assets/images/Guy4.png';
 
-function Form({userList, setUserList}) {
+function Form({ userList, setUserList }) {
     const [id, setId] = useState(0);
     const [userName, setuserName] = useState('');
     const [mail, setMail] = useState('');
     const [pass, setPass] = useState('');
+    const [selectedAvatar, setSelectedAvatar] = useState(Guy1);
     let user = {
         id: userList.length + 1,
         userName,
         mail,
-        pass
+        pass,
+        selectedAvatar
     }
 
 
@@ -26,10 +28,11 @@ function Form({userList, setUserList}) {
             id,
             userName,
             mail,
-            pass
+            pass,
+            selectedAvatar
 
         }
-        if(userName && mail && pass){
+        if (userName && mail && pass) {
             setUserList([...userList, user]);
         }
 
@@ -40,6 +43,7 @@ function Form({userList, setUserList}) {
         console.log(userList);
 
     }
+
 
 
 
@@ -57,13 +61,23 @@ function Form({userList, setUserList}) {
                     setPass(e.target.value)
                 }} />
                 <div className="form-images">
-                    <img src={Guy1} />
-                    <img src={Guy2} />
-                    <img src={Guy3} />
-                    <img src={Guy4} />
+                    {[Guy1, Guy2, Guy3, Guy4].map((img, index) => (
+
+                        <img key={index} src={img} onClick={() => setSelectedAvatar(img)}
+                            style = {{
+                                borderBottom: img === selectedAvatar ? '2px solid green': 'none'
+                            }}
+                         />
+                    ))}
+
+
+                    {/* <img src={Guy1} isSelect={false} onClick={selectAvatar} /> */}
+                    {/* <img src={Guy2} isSelect={false} onClick={selectAvatar} /> */}
+                    {/* <img src={Guy3} isSelect={false} onClick={selectAvatar} /> */}
+                    {/* <img src={Guy4} isSelect={false} onClick={selectAvatar} /> */}
                 </div>
                 <input className="submit-btn" type="submit" />
-            </form>
+            </form >
         </>
     )
 }
